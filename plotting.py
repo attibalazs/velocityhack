@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 def filter_depth(depth, top, bottom):
     """Filters the depth indexes for a top and bottom depth"""
     depth_idx = np.where((bottom > depth) & (top < depth))
@@ -46,6 +47,8 @@ def plot_velocity_predictions(ax, depth, vel, pred_vel, rmse, min_rmse_idx, cuto
     low_rmse_idx = rmse.argsort()[:cutoff]
     med_rmse_idx = rmse.argsort()[cutoff:cutoff * 2]
     high_rmse_idx = rmse.argsort()[cutoff * 2:cutoff * 3]
+
+    print('low:', len(low_rmse_idx), 'med:',len(high_rmse_idx),'high:', len(med_rmse_idx))
 
     #
     sample_rmse_idx = np.random.choice(low_rmse_idx, nr_samples)
