@@ -27,10 +27,10 @@ def plot_log(slider_range, depth, vp):
     ax.set_xlim(0, 3000)
 
 
-def plot_rmse_ellipse(ax, k, v0, rmse, cutoff=500):
+def plot_rmse_ellipse(ax, k, v0, rmse, max_rmse=500):
 
     # lowest rmse indices
-    idx = rmse.argsort()[:cutoff]
+    idx = np.where(rmse <= max_rmse)
     # best fit point
     idx_min = rmse.argmin()
 
